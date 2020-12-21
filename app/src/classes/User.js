@@ -20,15 +20,12 @@ class User {
       (err, datas) => {
         const db = datas[0];
         if (err) throw err;
-        console.log(db);
+
         if (db && this.id === db.user_id && this.passwd === db.user_passwd) {
           response.isSuccess = true;
-          console.log(response);
-          res.json(response);
-          return;
+          return res.json(response);
         }
-        res.json(response);
-        return;
+        return res.json(response);
       }
     );
   };
