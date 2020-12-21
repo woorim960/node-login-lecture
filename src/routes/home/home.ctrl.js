@@ -1,11 +1,6 @@
 "use strict";
 
-const users = {
-  jaesoung: "1234",
-  soongu: "1234",
-  minjae: "2345",
-  woorim: "3456",
-};
+const User = require("../../classes/User");
 
 const output = {
   hello: (req, res) => {
@@ -18,14 +13,9 @@ const output = {
 
 const process = {
   login: (req, res) => {
-    const response = {};
-    const user = req.body;
-
-    if (users.hasOwnProperty(user.id) && users[user.id] === user.passwd) {
-      response.isSuccess = true;
-      return res.json(response);
-    }
-    return res.json(response);
+    const body = req.body;
+    const user = new User(body.id, body.passwd);
+    user.login(res);
   },
 };
 

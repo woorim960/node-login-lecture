@@ -2,7 +2,7 @@
 
 const id = document.querySelector("#id"),
   passwd = document.querySelector("#passwd"),
-  btnLogin = document.querySelector("button");
+  btnLogin = document.querySelector("#login-btn");
 
 const init = () => {
   btnLogin.addEventListener("click", login);
@@ -37,6 +37,7 @@ const requestLogin = (post) => {
 };
 
 const processResponse = (res) => {
+  console.log(1);
   if (res.isSuccess) {
     location.href = "/";
     alert("로그인에 성공하셨습니다.");
